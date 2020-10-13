@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".databinding.DataBindingActivity">
+
+    <data>
+        <variable
+            name="detective"
+            type="com.test.jetpack.databinding.User" />
+        <variable
+            name="criminal"
+            type="com.test.jetpack.databinding.User" />
+        <variable
+            name="presenter"
+            type="com.test.jetpack.databinding.ClickPresenter" />
+        <import type="com.test.jetpack.databinding.ObservableUser" alias="ObservableUser"/>
+        <variable
+            name="user"
+            type="ObservableUser" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/firstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{detective.firstName}"/>
+        <TextView
+            android:id="@+id/lastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{detective.lastName}"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text='@{criminal ?? "none"}'
+            android:onClick="@{() -> presenter.onClick(detective)}"/>
+
+        <TextView
+            android:id="@+id/observableFirstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{user.firstName}"/>
+        <TextView
+            android:id="@+id/observableLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{user.lastName}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/click_me"
+            android:onClick="click"
+            android:focusable="true"
+            android:clickable="true"/>
+    </LinearLayout>
+
+</layout>
